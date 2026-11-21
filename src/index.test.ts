@@ -22,6 +22,14 @@ describe('Normalize License Text', () => {
     });
   });
 
+  it('should keep lines without any ASCII letters or digits', () => {
+    const raw =
+      '/*\n * 木兰宽松许可证\n * Все права защищены.\n * Ελληνικά\n * ----\n */';
+    expect(normalizeLicenseText(raw)).toEqual(
+      '木兰宽松许可证\nВсе права защищены.\nΕλληνικά',
+    );
+  });
+
   it('should normalize license text with custom leading delimiters', () => {
     const raw = 'XXX\nCopyright 2010 Google Inc. All Rights Reserved.';
     expect(normalizeLicenseText(raw, {leadingDelimiters: ['XXX']})).toEqual(
