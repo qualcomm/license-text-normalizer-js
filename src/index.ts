@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import splitLines from 'split-lines';
-import isAlNum from 'is-alphanumerical';
 
 type Delimiter = string;
 
@@ -183,6 +182,13 @@ function byLength(a: string, b: string): number {
     return 1;
   }
   return 0;
+}
+
+// any Unicode letter or number, like Python's str.isalnum()
+const ALNUM = new RegExp('[\\p{L}\\p{N}]', 'u');
+
+function isAlNum(character: string): boolean {
+  return ALNUM.test(character);
 }
 
 function isLineNonAlnum(line: string): boolean {
