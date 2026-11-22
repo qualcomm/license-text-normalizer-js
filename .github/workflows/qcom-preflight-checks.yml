@@ -14,6 +14,7 @@ jobs:
       enable-semgrep-scan: true
       enable-dependency-review: true
       enable-repolinter-check: true
+      enable-repo-policy-check: true
       enable-copyright-license-check: true
       enable-commit-email-check: true
       enable-commit-msg-check: false
